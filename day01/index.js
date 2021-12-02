@@ -36,10 +36,11 @@ class Solution {
 }
 
 let lines = [];
-const readable = fs.createReadStream(path.resolve('input.txt'));
+const __dirname = path.dirname(new URL(import.meta.url).pathname);
+const readable = fs.createReadStream(path.resolve(__dirname, 'input.txt'));
 const fileReader = readline.createInterface({ input: readable, crlfDelay: Infinity })
 for await (const line of fileReader) lines.push(line);
 
 const solution = new Solution(lines);
-console.log('Part 1:', solution.solvePartOne())
-console.log('Part 2:', solution.solvePartTwo())
+console.log('Solution Part 1:', solution.solvePartOne())
+console.log('Solution Part 2:', solution.solvePartTwo())
